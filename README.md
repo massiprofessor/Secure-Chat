@@ -66,7 +66,7 @@ SecureChat/
 ## 📥 Download
 
 ### Eseguibile Windows (consigliato)
-Scarica l'ultima versione dalla pagina [Releases](https://github.com/massiprofessor/securechat/releases):
+Scarica l'ultima versione dalla pagina [Releases](https://github.com/massiprofessor/Secure-Chat/releases):   
 
 - `SecureChat-v3.2.1-win64.zip` — estrai e avvia `SecureChat.exe`
 - Non serve installare Python
