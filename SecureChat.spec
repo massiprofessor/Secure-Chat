@@ -1,0 +1,83 @@
+﻿import os
+
+block_cipher = None
+
+datas = []
+try:
+    import customtkinter
+    datas += [(os.path.dirname(customtkinter.__file__), "customtkinter")]
+except ImportError:
+    pass
+try:
+    import darkdetect
+    datas += [(os.path.dirname(darkdetect.__file__), "darkdetect")]
+except ImportError:
+    pass
+
+hiddenimports = [
+    "client_core",
+    "cryptography",
+    "cryptography.hazmat.primitives.asymmetric.rsa",
+    "cryptography.hazmat.primitives.asymmetric.padding",
+    "cryptography.hazmat.primitives.hashes",
+    "cryptography.hazmat.primitives.serialization",
+    "cryptography.hazmat.backends.openssl",
+    "cryptography.hazmat.backends.openssl.backend",
+    "cryptography.fernet",
+    "customtkinter",
+    "darkdetect",
+    "PIL",
+    "PIL._tkinter_finder",
+    "tkinter",
+    "tkinter.messagebox",
+    "tkinter.simpledialog",
+    "socket", "threading", "json", "hashlib",
+    "struct", "platform", "logging",
+]
+
+a = Analysis(
+    ["main.py"],
+    pathex=["."],
+    binaries=[],
+    datas=datas,
+    hiddenimports=hiddenimports,
+    hookspath=[],
+    hooksconfig={},
+    runtime_hooks=[],
+    excludes=["matplotlib","numpy","pandas","scipy","IPython","notebook","test","unittest"],
+    win_no_prefer_redirects=False,
+    win_private_assemblies=False,
+    cipher=block_cipher,
+    noarchive=False,
+)
+
+pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
+
+exe = EXE(
+    pyz,
+    a.scripts,
+    [],
+    exclude_binaries=True,
+    name="SecureChat",
+    debug=False,
+    bootloader_ignore_signals=False,
+    strip=False,
+    upx=True,
+    console=False,
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
+)
+
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    name="SecureChat",
+)
